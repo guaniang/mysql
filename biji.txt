@@ -1,0 +1,58 @@
+mysql  数据库   优点 免费   开源的
+
+
+
+
+关系型数据库   mysql   mogonDb  sqlserver 
+
+
+
+非关系型数据  nosql  
+
+
+非关系型数据库   不能解决大量数据的存储    新技术 
+
+
+
+mysql   
+
+建数据库   数据库名    
+		  字符集   utf8 _ utf-8_unicode
+		  整理   utf8-general  通用的排序规则
+
+建表   
+
+
+主键   把自己的所建的表 看成是一把锁   一把锁只能有一把钥匙
+
+	一个表只能有一个主键    一般是设在id的字段上
+
+在服务端连接数据库  
+1.下载mysql模块   cnpm i mysql
+2.const mysql = require('mysql');
+
+
+3.const pool = mysql.createPool({   用mysql创建一个连接池
+	host:'localhost',   //主机名
+	user:'root',		//用户名
+	password:'123456',	//密码
+	database:'list',	//数据库名
+	port:3306			//端口号
+})
+
+router.use('/user',function(req,res){
+	用getConnection 建立一个隐式的连接来访问数据库  连接成功没有   当用户没用建立任何连接请求的时候
+	pool.getConnection(function(err,connection){
+		if(err) throw err;
+		
+	})
+})
+
+
+
+sql语句
+
+增
+删
+改
+查 

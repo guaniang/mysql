@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+账号：<input type="text" id="user"><br/>
+密码：<input type="text" id="pass"><br/>
+<button id="zc">注册</button>
+<button id="dl">登录</button>	
+</body>
+</html>
+<script type="text/javascript">
+ $('#zc').click(function(){
+ 	console.log(1)
+      $.ajax({
+        url:'http://localhost:8004/user/zc',
+        type:'POST',
+        data:{
+            user:$('#user').val(),
+            pass:$('#pass').val()
+        },
+        success:function(data){
+            console.log(data);
+        }
+    })
+  })
+ $('#dl').click(function(){
+       var user=$("#user").val();
+       var pass=$("#pass").val();
+     $.ajax({
+     url:"http://localhost:8004/user/login",
+    type:"POST",
+     data:{
+        user:user,
+        pass:pass
+        },
+  success:function(d){
+        console.log(d)   
+            }
+     })
+  })
+	
+</script>
